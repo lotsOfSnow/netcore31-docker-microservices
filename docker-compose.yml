@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  first-api: # cannot contain uppercase chars
+    # will build ./Docker/firstApi/Dockerfile
+    build: ./src/DockerMicroservices.FirstApi
+  second-api:
+    # will build ./Docker/secondApi/Dockerfile
+    build: ./src/DockerMicroservices.SecondApi
