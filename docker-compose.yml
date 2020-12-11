@@ -1,8 +1,10 @@
 version: '3.8'
 services:
   first-api: # cannot contain uppercase chars
-    # will build ./Docker/firstApi/Dockerfile
-    build: ./src/DockerMicroservices.FirstApi
+    build:
+      context: .
+      dockerfile: src/DockerMicroservices.FirstApi/Dockerfile
   second-api:
-    # will build ./Docker/secondApi/Dockerfile
-    build: ./src/DockerMicroservices.SecondApi
+    build:
+      context: .
+      dockerfile: src/DockerMicroservices.SecondApi/Dockerfile

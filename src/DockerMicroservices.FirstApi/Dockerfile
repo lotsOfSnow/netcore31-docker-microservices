@@ -7,12 +7,11 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["DockerMicroservices.FirstApi.csproj", "src/DockerMicroservices.FirstApi/"]
+COPY ["src/DockerMicroservices.FirstApi/DockerMicroservices.FirstApi.csproj", "src/DockerMicroservices.FirstApi/"]
+COPY ["src/DockerMicroservices.Shared/DockerMicroservices.Shared.csproj", "src/DockerMicroservices.Shared/"]
 RUN dotnet restore "src/DockerMicroservices.FirstApi/DockerMicroservices.FirstApi.csproj"
-
-WORKDIR "src/DockerMicroservices.FirstApi/"
-COPY . ./
-
+COPY . .
+WORKDIR "/src/src/DockerMicroservices.FirstApi"
 RUN dotnet build "DockerMicroservices.FirstApi.csproj" -c Release -o /app/build
 
 FROM build AS publish
