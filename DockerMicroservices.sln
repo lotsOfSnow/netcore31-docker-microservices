@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockerMicroservices.FirstApi", "src\DockerMicroservices.FirstApi\DockerMicroservices.FirstApi.csproj", "{28CC4274-7705-4840-9C9C-AA5F5BB7A9AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DockerMicroservices.FirstApi", "src\DockerMicroservices.FirstApi\DockerMicroservices.FirstApi.csproj", "{28CC4274-7705-4840-9C9C-AA5F5BB7A9AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockerMicroservices.SecondApi", "src\DockerMicroservices.SecondApi\DockerMicroservices.SecondApi.csproj", "{BD63C9AE-696E-4B62-816F-CE023A7AB480}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DockerMicroservices.SecondApi", "src\DockerMicroservices.SecondApi\DockerMicroservices.SecondApi.csproj", "{BD63C9AE-696E-4B62-816F-CE023A7AB480}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BEB54EA8-4EFF-4329-A886-08DA087B91D3}"
 	ProjectSection(SolutionItems) = preProject
@@ -14,7 +14,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		docker-compose.yml = docker-compose.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockerMicroservices.Shared", "src\DockerMicroservices.Shared\DockerMicroservices.Shared.csproj", "{AB6BF0B6-518B-4F7E-87AE-318A5F87B552}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DockerMicroservices.Shared", "src\DockerMicroservices.Shared\DockerMicroservices.Shared.csproj", "{AB6BF0B6-518B-4F7E-87AE-318A5F87B552}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{A8089F02-FB01-4D3D-B345-F9D14D4A6BCD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +36,10 @@ Global
 		{AB6BF0B6-518B-4F7E-87AE-318A5F87B552}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB6BF0B6-518B-4F7E-87AE-318A5F87B552}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB6BF0B6-518B-4F7E-87AE-318A5F87B552}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8089F02-FB01-4D3D-B345-F9D14D4A6BCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8089F02-FB01-4D3D-B345-F9D14D4A6BCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8089F02-FB01-4D3D-B345-F9D14D4A6BCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8089F02-FB01-4D3D-B345-F9D14D4A6BCD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -13,7 +13,7 @@ namespace DockerMicroservices.FirstApi.Controllers
     public class InputController : ControllerBase
     {
         private readonly ILogger<InputController> _logger;
-        private readonly string outputControllerPath = $"http://localhost:54310/output";
+        private readonly string outputControllerPath = $"http://dockermicroservices.secondapi/output";
 
         public InputController(ILogger<InputController> logger)
         {

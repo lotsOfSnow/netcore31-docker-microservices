@@ -1,18 +1,23 @@
-# HTTPS configuration not done yet...
-version: '3.8'
+version: '3.4'
+
 services:
-  first-api:
+  dockermicroservices.firstapi:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
     ports:
-     - "44310:80" # for HTTP
-    # - "44311:443" # for HTTPS
-    #environment:
-    # - ASPNETCORE_ENVIRONMENT=Development
-    # - ASPNETCORE_URLS=https://+:443;http://+:80
-    # - ASPNETCORE_Kestrel__Certificates__Default__Password=yourPasswordHere
-    # - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
-    #volumes:
-    # - ~/.aspnet/https:/https:ro
-  second-api:
+      - "44310:80"
+      - "44311:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+  dockermicroservices.secondapi:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
     ports:
       - "54310:80"
-      #- "54311:443"
+      - "54311:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
