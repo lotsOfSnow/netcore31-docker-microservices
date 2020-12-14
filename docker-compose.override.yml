@@ -9,8 +9,9 @@ services:
       - "44310:80"
       - "44311:443"
     volumes:
-      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro # used for https stuff
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro # also for https
+      - ~/docker_microservices/db:/app/host_db # the directory mounted from host
   dockermicroservices.secondapi:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -21,3 +22,4 @@ services:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ~/docker_microservices/db:/app/host_db:ro # same as in firstapi, only here it's readonly

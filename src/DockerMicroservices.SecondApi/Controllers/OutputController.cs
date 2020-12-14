@@ -1,6 +1,7 @@
 ﻿using DockerMicroservices.Shared;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using System;
+using System.Linq;
 
 namespace DockerMicroservices.SecondApi.Controllers
 {
@@ -8,17 +9,34 @@ namespace DockerMicroservices.SecondApi.Controllers
     [Route("[controller]")]
     public class OutputController : ControllerBase
     {
-        private readonly ILogger<OutputController> _logger;
+        private readonly InFileBlocksRepository hostRepository;
+        private readonly InFileBlocksRepository localRepository;
 
-        public OutputController(ILogger<OutputController> logger)
+        public OutputController()
         {
-            _logger = logger;
+            hostRepository = new InFileBlocksRepository(Constants.HostDb);
+            localRepository = new InFileBlocksRepository("/app/container_db");
         }
 
-        [HttpPost]
-        public IActionResult Calculate(CalculationRequest request)
+        [HttpPost("sumPointsInBlock/{guid}")]
+        public IActionResult Calculate(Guid guid)
         {
-            return Ok(request.FirstValue + request.SecondValue);
+            var block = localRepository.GetByGuid(guid);
+
+            // If Block doesn't exist in local container's volume, try getting it from the main repo ("~/docker_microservices/db" directory on host machine)
+            if (block == null)
+            {
+                block = hostRepository.GetByGuid(guid) ?? throw new Exception($"Block doesn't exist in any repository");
+                localRepository.Add(block);
+            }
+
+            return Ok(block.Requests.Select(req => req.FirstValue + req.SecondValue));
+        }
+
+        [HttpGet("getLocalBlocks")]
+        public IActionResult GetAllOfLocal()
+        {
+            return Ok(localRepository.GetAll());
         }
     }
 }
