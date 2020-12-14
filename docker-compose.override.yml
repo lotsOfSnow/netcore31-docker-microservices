@@ -22,5 +22,5 @@ services:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
-      - /app/container_db
+      - /app/container_db # local container's volume - hidden to host filesystem
       - ~/docker_microservices/db:/app/host_db:ro # same as in firstapi, only here it's readonly

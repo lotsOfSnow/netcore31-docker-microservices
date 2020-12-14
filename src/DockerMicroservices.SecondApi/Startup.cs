@@ -35,7 +35,7 @@ namespace DockerMicroservices.SecondApi
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "First API");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Second API");
             });
 
             //app.UseHttpsRedirection();
